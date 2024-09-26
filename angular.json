@@ -3,9 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -26,19 +24,36 @@
             "outputPath": "dist/lemon-mart-learning",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/android-chrome-192x192.png",
+              "src/favicon-16x16.png",
+              "src/mstile-310x150.png",
+              "src/android-chrome-512x512.png",
+              "src/favicon-32x32.png",
+              "src/mstile-310x310.png",
+              "src/apple-touch-icon.png",
+              "src/manifest.json",
+              "src/mstile-70x70.png",
+              "src/browserconfig.xml",
+              "src/mstile-144x144.png",
+              "src/safari-pinned-tab.svg",
+              "src/mstile-150x150.png",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/lemonmart-theme.scss",
+                "inject": false
+              }
             ],
             "scripts": []
           },
@@ -84,20 +99,36 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/android-chrome-192x192.png",
+              "src/favicon-16x16.png",
+              "src/mstile-310x150.png",
+              "src/android-chrome-512x512.png",
+              "src/favicon-32x32.png",
+              "src/mstile-310x310.png",
+              "src/apple-touch-icon.png",
+              "src/manifest.json",
+              "src/mstile-70x70.png",
+              "src/browserconfig.xml",
+              "src/mstile-144x144.png",
+              "src/safari-pinned-tab.svg",
+              "src/mstile-150x150.png",
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/lemonmart-theme.scss",
+                "inject": false
+              }
             ],
             "scripts": []
           }
@@ -105,10 +136,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }

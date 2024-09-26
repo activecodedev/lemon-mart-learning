@@ -11,6 +11,7 @@
     "style": "prettier --check \"**/{src,tests,e2e}/**/*.{*scss,ts}\"",
     "style:fix": "prettier --write \"**/{src,tests,e2e}/**/*.{*scss,ts}\" && js-beautify \"**/src/**/*.html\"",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "init:env": "init-dev-env generate-dot-env example.env -f",
     "predocker:build": "npm run build",
     "docker:build": "cross-conf-env docker image build . -t $npm_package_config_imageRepo:$npm_package_version",
