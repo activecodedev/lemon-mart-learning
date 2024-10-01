@@ -50,10 +50,10 @@
             ],
             "styles": [
               "src/styles.scss",
-              {
-                "input": "src/lemonmart-theme.scss",
-                "inject": false
-              }
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.scss",
+              "primeflex/themes/primeone-light.scss"
             ],
             "scripts": []
           },
@@ -125,10 +125,10 @@
             ],
             "styles": [
               "src/styles.scss",
-              {
-                "input": "src/lemonmart-theme.scss",
-                "inject": false
-              }
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.scss",
+              "primeflex/themes/primeone-light.scss"
             ],
             "scripts": []
           }

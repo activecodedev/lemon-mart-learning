@@ -1,6 +1,17 @@
-<mat-toolbar color="primary">
-  <a mat-button routerLink="/home">
-    <h1>LemonMart</h1>
-  </a>
-</mat-toolbar>
+<p-toolbar>
+  <div class="p-toolbar-group-start">
+    <p-button icon="pi pi-bars" />
+  </div>
+  <div class="p-toolbar-group-center">
+    <i class="pi pi-shop"></i>
+    <a class="p-button" routerLink="/home">
+      LemonMart
+    </a>
+  </div>
+  <div class="p-toolbar-group-end">
+    <button mat-icon-button>
+      <i class="pi pi-lock"></i>
+    </button>
+  </div>
+</p-toolbar>
 <router-outlet></router-outlet>
