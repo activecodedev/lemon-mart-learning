@@ -1,0 +1,25 @@
+<p-toolbar styleClass="bg-gray-900 shadow-2">
+  <div class="p-toolbar-group-start gap-1">
+    <p-button routerLink="home"
+              routerLinkActive="active-link"
+              label="Manager's Dashboard" />
+    <p-button routerLink="users"
+              routerLinkActive="active-link"
+              label="User Management" />
+    <p-button routerLink="receipts"
+              routerLinkActive="active-link"
+              label="Receipt Lookup" />
+    <p-button routerLink="/inventory"
+              pTooltip="Inventory"
+              routerLinkActive="active-link"
+              label="Inventory"
+              icon="pi pi-list"
+              ariaLabel="Inventory" />
+    <p-button routerLink="/pos"
+              routerLinkActive="active-link"
+              label="POS"
+              icon="pi pi-shopping-cart"
+              ariaLabel="POS" />
+  </div>
+</p-toolbar>
+<router-outlet></router-outlet>

@@ -4,13 +4,23 @@
   </div>
   <div class="p-toolbar-group-center">
     <i class="pi pi-shop"></i>
-    <a class="p-button" routerLink="/home">
+    <a class="p-button"
+       routerLink="/home">
       LemonMart
     </a>
   </div>
-  <div class="p-toolbar-group-end">
-    <button mat-icon-button>
-      <i class="pi pi-lock"></i>
+  <div class="p-toolbar-group-end flex flex-wrap justify-content-center gap-3">
+    <button mat-icon-button
+            routerLink="/user/profile"
+            aria-label="User profile"
+            pTooltip="Profile">
+      <i class="pi pi-user"></i>
+    </button>
+    <button mat-icon-button
+            routerLink="/user/logout"
+            aria-label="Logout"
+            pTooltip="Logout">
+      <i class="pi pi-lock-open"></i>
     </button>
   </div>
 </p-toolbar>
