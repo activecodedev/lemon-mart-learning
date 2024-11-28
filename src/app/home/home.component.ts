@@ -1,6 +1,8 @@
-import { Component } from '@angular/core'
-import { RouterLink } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+import { Router, RouterLink } from '@angular/router'
 import { ButtonModule } from 'primeng/button'
+import { AuthService } from '../auth/auth.service'
+import { combineLatest, filter, tap } from 'rxjs'
 
 @Component({
   selector: 'app-home',
@@ -15,4 +17,23 @@ import { ButtonModule } from 'primeng/button'
     `,
   ],
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {}
+
+  login() {
+    this.authService.login('manager@test.com', '12345678')
+    combineLatest([this.authService.authStatus$, this.authService.currentUser$])
+      .pipe(
+        filter(([authStatus, user]) => authStatus.isAuthenticated && user._id !== ''),
+        tap(([authStatus, user]) => {
+          this.router.navigate(['/manager'])
+        })
+      )
+      .subscribe()
+  }
+}
