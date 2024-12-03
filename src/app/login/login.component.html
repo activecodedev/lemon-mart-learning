@@ -1,0 +1,63 @@
+<p-card header="Hello, Limoncu!"
+        [style]="{ width: '360px' }">
+  <form [formGroup]="loginForm"
+        (ngSubmit)="login(loginForm)">
+    <div class="flex flex-column">
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-envelope" />
+        <input type="text"
+               pInputText
+               placeholder="Email"
+               id="email"
+               formControlName="email" />
+      </p-iconField>
+      <small class="p-error block"
+             *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('required')
+        ">
+        E-mail is required</small>
+      <small class="p-error block"
+             *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('email')
+        ">
+        E-mail is invalid</small>
+      <p-iconField iconPosition="left">
+        <p-inputIcon styleClass="pi pi-lock" />
+        <input type="text"
+               pInputText
+               placeholder="password"
+               type="password"
+               id="password"
+               placeholder="Password"
+               formControlName="password" />
+      </p-iconField>
+      <small class="p-error block"
+             *ngIf="
+          loginForm.get('password')?.invalid && loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('required')
+        ">
+        Password is required</small>
+      <small class="p-error block"
+             *ngIf="
+          loginForm.get('password')?.invalid && loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('minLength')
+        ">
+        Minimum length is 8</small>
+      <small class="p-error block"
+             *ngIf="
+          loginForm.get('password')?.invalid && loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('maxLength')
+        ">
+        Maximum length is 50</small>
+      <p-button pRipple
+                label="Login"
+                class="w-full mb-4"
+                type="submit"
+                [disabled]="loginForm.invalid"></p-button>
+      <a href="#"
+         class="font-medium text-sm text-300">forget password?</a>
+      <p class="font-medium text-400 m-0 mt-6">Don’t you have an account, <a href="#"
+           class="text-primary cursor-pointer">sign up</a></p>
+      <p-messages [closable]="false"
+                  key="loginError"
+                  severity="error">asdasd</p-messages>
+    </div>
+  </form>
+</p-card>

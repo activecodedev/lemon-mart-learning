@@ -3,11 +3,12 @@ import { Router, RouterLink } from '@angular/router'
 import { ButtonModule } from 'primeng/button'
 import { AuthService } from '../auth/auth.service'
 import { combineLatest, filter, tap } from 'rxjs'
+import { LoginComponent } from '../login/login.component'
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, RouterLink],
+  imports: [ButtonModule, RouterLink, LoginComponent],
   templateUrl: './home.component.html',
   styles: [
     `
@@ -17,23 +18,23 @@ import { combineLatest, filter, tap } from 'rxjs'
     `,
   ],
 })
-export class HomeComponent implements OnInit {
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+export class HomeComponent {
+  displayLogin = true
 
-  ngOnInit(): void {}
+  constructor() // private router: Router // private authService: AuthService,
+  {}
 
-  login() {
-    this.authService.login('manager@test.com', '12345678')
-    combineLatest([this.authService.authStatus$, this.authService.currentUser$])
-      .pipe(
-        filter(([authStatus, user]) => authStatus.isAuthenticated && user._id !== ''),
-        tap(([authStatus, user]) => {
-          this.router.navigate(['/manager'])
-        })
-      )
-      .subscribe()
-  }
+  // ngOnInit(): void {}
+
+  // login() {
+  //   this.authService.login('manager@test.com', '12345678')
+  //   combineLatest([this.authService.authStatus$, this.authService.currentUser$])
+  //     .pipe(
+  //       filter(([authStatus, user]) => authStatus.isAuthenticated && user._id !== ''),
+  //       tap(([authStatus, user]) => {
+  //         this.router.navigate(['/manager'])
+  //       })
+  //     )
+  //     .subscribe()
+  // }
 }
