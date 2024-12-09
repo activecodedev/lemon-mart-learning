@@ -4,8 +4,8 @@ import { ButtonModule } from 'primeng/button'
 import { ToolbarModule } from 'primeng/toolbar'
 import { TooltipModule } from 'primeng/tooltip'
 import { AppLayoutModule } from './layout/app.layout.module'
-import { PrimeNGConfig } from 'primeng/api'
 import { AppConfig, LayoutService } from './layout/service/app.layout.service'
+import { AuthService } from './auth/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -25,11 +25,9 @@ export class AppComponent {
   title = 'lemon-mart-learning'
 
   constructor(
-    private primengConfig: PrimeNGConfig,
-    private layoutService: LayoutService
+    private layoutService: LayoutService,
+    public authService: AuthService
   ) {
-    // this.primengConfig.ripple = true;
-
     const config: AppConfig = {
       ripple: true,
       menuMode: 'horizontal',

@@ -10,39 +10,39 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      {
+        path: 'manager',
+        loadChildren: () =>
+          import('./manager/manager-routing.module').then((m) => m.ManagerRoutingModule),
+      },
+      {
+        path: 'user',
+        loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+      },
+      {
+        path: 'pos',
+        loadChildren: () => import('./pos/pos.module').then((m) => m.PosModule),
+      },
+      {
+        path: 'inventory',
+        loadChildren: () =>
+          import('./inventory/inventory.module').then((m) => m.InventoryModule),
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'login/:redirectUrl',
+        component: LoginComponent,
+      },
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./page-not-found/page-not-found.component').then(
+            (c) => c.PageNotFoundComponent
+          ),
+      },
     ],
-  },
-  {
-    path: 'manager',
-    loadChildren: () =>
-      import('./manager/manager-routing.module').then((m) => m.ManagerRoutingModule),
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
-  },
-  {
-    path: 'pos',
-    loadChildren: () => import('./pos/pos.module').then((m) => m.PosModule),
-  },
-  {
-    path: 'inventory',
-    loadChildren: () =>
-      import('./inventory/inventory.module').then((m) => m.InventoryModule),
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'login/:redirectUrl',
-    component: LoginComponent,
-  },
-  {
-    path: '**',
-    loadComponent: () =>
-      import('./page-not-found/page-not-found.component').then(
-        (c) => c.PageNotFoundComponent
-      ),
   },
 ]

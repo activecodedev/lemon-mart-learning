@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core'
-import { Router, RouterLink } from '@angular/router'
+import { Component } from '@angular/core'
 import { ButtonModule } from 'primeng/button'
 import { AuthService } from '../auth/auth.service'
-import { combineLatest, filter, tap } from 'rxjs'
 import { LoginComponent } from '../login/login.component'
+import { AsyncPipe } from '@angular/common'
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ButtonModule, RouterLink, LoginComponent],
+  imports: [ButtonModule, LoginComponent, AsyncPipe],
   templateUrl: './home.component.html',
   styles: [
     `
@@ -19,22 +18,7 @@ import { LoginComponent } from '../login/login.component'
   ],
 })
 export class HomeComponent {
-  displayLogin = true
-
-  constructor() // private router: Router // private authService: AuthService,
-  {}
-
-  // ngOnInit(): void {}
-
-  // login() {
-  //   this.authService.login('manager@test.com', '12345678')
-  //   combineLatest([this.authService.authStatus$, this.authService.currentUser$])
-  //     .pipe(
-  //       filter(([authStatus, user]) => authStatus.isAuthenticated && user._id !== ''),
-  //       tap(([authStatus, user]) => {
-  //         this.router.navigate(['/manager'])
-  //       })
-  //     )
-  //     .subscribe()
-  // }
+  constructor(public authService: AuthService) {
+    // private router: Router // private authService: AuthService,
+  }
 }

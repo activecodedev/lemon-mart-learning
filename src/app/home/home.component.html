@@ -5,8 +5,18 @@
      (click)="login()"> Login as manager </a>
 </div> -->
 
-@if(displayLogin) {
-<app-login class="flex align-items-center justify-content-center"></app-login>
+@if((authService.authStatus$ | async)?.isAuthenticated) {
+<div>
+  <div class="text-lg">
+    This is Active Shop! The place where
+  </div>
+  <div class="text-lg">
+    You get a lemon, youe get a lemon, you get a lemon...
+  </div>
+  <div class="text-lg">
+    Everybody gets lemon.
+  </div>
+</div>
 } @else {
-<p>You get a lemon, youe get a lemon, you get a lemon...</p>
+<app-login class="flex align-items-center justify-content-center"></app-login>
 }
