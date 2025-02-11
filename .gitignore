@@ -44,6 +44,5 @@ Thumbs.db
 node_modules
 .vscode/settings.json
 .firebase
-firebase.json
-.firebaserc
 .vscode/launch.json
+.public
