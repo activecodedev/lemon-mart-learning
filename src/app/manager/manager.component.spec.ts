@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ManagerComponent } from './manager.component'
+import { ActivatedRoute } from '@angular/router'
+import { of } from 'rxjs'
 
 describe('ManagerComponent', () => {
   let component: ManagerComponent
@@ -9,6 +11,14 @@ describe('ManagerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ManagerComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}), // Mock any route parameters if needed
+          },
+        },
+      ],
     }).compileComponents()
 
     fixture = TestBed.createComponent(ManagerComponent)
