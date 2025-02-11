@@ -1,0 +1,12 @@
+<div class="flex items-center mb-8">
+  {{ data.data.content }}
+</div>
+<div class="flex justify-end gap-2">
+  @if (data.data.cancelText) {
+  <p-button [label]="data.data.cancelText"
+            severity="secondary"
+            (click)="cancel()" />
+  }
+  <p-button [label]="data.data.okText"
+            (click)="ok()" />
+</div>

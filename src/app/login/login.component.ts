@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { CardModule } from 'primeng/card'
 import { AuthService } from '../auth/auth.service'
 import { ActivatedRoute, Router } from '@angular/router'
@@ -10,7 +10,10 @@ import { InputIconModule } from 'primeng/inputicon'
 import { InputTextModule } from 'primeng/inputtext'
 import { MessagesModule } from 'primeng/messages'
 import { CommonModule } from '@angular/common'
-import { Message } from 'primeng/api'
+import { ToastMessageOptions } from 'primeng/api'
+import { EmailValidation, PasswordValidation } from '../common/validations'
+import { UiService } from '../common/ui.service'
+import { Role } from '../auth/auth.enum'
 
 @Component({
   selector: 'app-login',
@@ -33,10 +36,11 @@ export class LoginComponent implements OnInit {
   private readonly authService = inject(AuthService)
   private readonly router = inject(Router)
   private readonly route = inject(ActivatedRoute)
+  private readonly uiService = inject(UiService)
 
   loginForm!: FormGroup
   loginError = ''
-  msgs: Message[] = []
+  msgs: ToastMessageOptions[] = []
 
   get redirectUrl() {
     return this.route.snapshot.queryParamMap.get('redirectUrl') || ''
@@ -49,11 +53,8 @@ export class LoginComponent implements OnInit {
 
   buildLoginForm() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [Validators.required, Validators.minLength(8), Validators.maxLength(50)],
-      ],
+      email: ['', EmailValidation],
+      password: ['', PasswordValidation],
     })
   }
 
@@ -69,7 +70,10 @@ export class LoginComponent implements OnInit {
         filter(([authStatus, user]) => authStatus.isAuthenticated && user._id !== ''),
         first(),
         tap(([authStatus, user]) => {
-          this.router.navigate([this.redirectUrl || '/manager'])
+          this.router.navigate([
+            this.redirectUrl || this.homeRoutePerRole(user.role as Role),
+          ])
+          this.uiService.showToast('Summary', 'Detail')
         })
       )
       .subscribe()
@@ -82,5 +86,19 @@ export class LoginComponent implements OnInit {
       summary: 'Error Message',
       detail: error,
     })
+  }
+
+  private homeRoutePerRole(role: Role) {
+    switch (role) {
+      case Role.Cashier:
+        return '/pos'
+      case Role.Clerk:
+        return '/inventory'
+      case Role.Manager:
+        return '/manager'
+
+      default:
+        return '/user/profile'
+    }
   }
 }

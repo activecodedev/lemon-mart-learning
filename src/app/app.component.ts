@@ -22,7 +22,7 @@ import { AuthService } from './auth/auth.service'
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'lemon-mart-learning'
+  title = 'ActiveStore'
 
   constructor(
     private layoutService: LayoutService,

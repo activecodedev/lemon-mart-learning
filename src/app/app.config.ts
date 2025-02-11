@@ -6,14 +6,25 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http'
 import { AuthService } from './auth/auth.service'
 import { InMemoryAuthService } from './auth/auth.in-memory.service'
 import { AuthHttpInterceptor } from './auth/auth.http.interceptor'
-import { provideAnimations } from '@angular/platform-browser/animations'
+import { MessageService } from 'primeng/api'
+import { DialogService } from 'primeng/dynamicdialog'
+import { providePrimeNG } from 'primeng/config'
+import Aura from '@primeng/themes/aura'
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideAnimations(),
+    provideAnimationsAsync(),
     provideHttpClient(withInterceptors([AuthHttpInterceptor])),
     { provide: AuthService, useClass: InMemoryAuthService },
+    MessageService,
+    DialogService,
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+      },
+    }),
   ],
 }

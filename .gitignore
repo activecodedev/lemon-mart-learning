@@ -24,7 +24,7 @@ yarn-error.log
 .vscode/*
 .vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
+.vscode/launch.json
 !.vscode/extensions.json
 .history/*
 
@@ -43,3 +43,7 @@ Thumbs.db
 .env
 node_modules
 .vscode/settings.json
+.firebase
+firebase.json
+.firebaserc
+.vscode/launch.json
