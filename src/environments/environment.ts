@@ -9,13 +9,13 @@ export const environment = {
   baseUrl: 'http://localhost:3000',
   authMode: AuthMode.InMemory,
   firebase: {
-    apiKey: 'AIzaSyA_39OnkusNS7WeMqTuhRosonMV20WntcA',
-    authDomain: 'lemon-mart-007.firebaseapp.com',
-    databaseURL: 'https://lemon-mart-007.firebaseio.com',
-    projectId: 'lemon-mart-007',
-    storageBucket: '',
-    messagingSenderId: '416892066612',
-    appId: '1:416892066612:web:ec2f404c18fd4bd8',
+    projectId: 'active-store-learning',
+    appId: '1:846214862875:web:a6ed827ecc50bd592580be',
+    storageBucket: 'active-store-learning.firebasestorage.app',
+    apiKey: 'AIzaSyDmygXsQ6GbPa4ASD6YADWokSdbc6CVaZM',
+    authDomain: 'active-store-learning.firebaseapp.com',
+    messagingSenderId: '846214862875',
+    measurementId: 'G-6VBGQFCWZ4',
   },
 }
 

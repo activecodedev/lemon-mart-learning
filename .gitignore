@@ -46,3 +46,8 @@ node_modules
 .firebase
 .vscode/launch.json
 .public
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json

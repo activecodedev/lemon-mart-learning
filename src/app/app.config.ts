@@ -11,6 +11,10 @@ import { DialogService } from 'primeng/dynamicdialog'
 import { providePrimeNG } from 'primeng/config'
 import Aura from '@primeng/themes/aura'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
+import { getAuth, provideAuth } from '@angular/fire/auth'
+import { environment } from '../environments/environment'
+import { FirebaseAuthService } from './auth/auth.firebase.service'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +22,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([AuthHttpInterceptor])),
-    { provide: AuthService, useClass: InMemoryAuthService },
     MessageService,
     DialogService,
     providePrimeNG({
@@ -26,5 +29,8 @@ export const appConfig: ApplicationConfig = {
         preset: Aura,
       },
     }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    { provide: AuthService, useClass: FirebaseAuthService },
   ],
 }
