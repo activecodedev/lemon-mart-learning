@@ -4,7 +4,6 @@ import { provideRouter } from '@angular/router'
 import { routes } from './app.routes'
 import { provideHttpClient, withInterceptors } from '@angular/common/http'
 import { AuthService } from './auth/auth.service'
-import { InMemoryAuthService } from './auth/auth.in-memory.service'
 import { AuthHttpInterceptor } from './auth/auth.http.interceptor'
 import { MessageService } from 'primeng/api'
 import { DialogService } from 'primeng/dynamicdialog'
@@ -14,7 +13,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
 import { getAuth, provideAuth } from '@angular/fire/auth'
 import { environment } from '../environments/environment'
-import { FirebaseAuthService } from './auth/auth.firebase.service'
+import { authFactory } from './auth/auth.factory'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +30,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    { provide: AuthService, useClass: FirebaseAuthService },
+    { provide: AuthService, useFactory: authFactory },
   ],
 }
